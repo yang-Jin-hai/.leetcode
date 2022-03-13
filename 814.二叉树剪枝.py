@@ -13,5 +13,11 @@
 #         self.right = right
 class Solution:
     def pruneTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root: return None
+        root.left = self.pruneTree(root.left)
+        root.right = self.pruneTree(root.right)
+        if not (root.val or root.left or root.right):
+            return None
+        return root
 # @lc code=end
 
